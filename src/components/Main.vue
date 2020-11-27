@@ -103,7 +103,7 @@ export default class Main extends Vue {
 
   rule = [(v: string) => !!v || 'Please input the URL!'];
 
-  generated = true;
+  generated = false;
 
   short() {
     if (this.valid) {
