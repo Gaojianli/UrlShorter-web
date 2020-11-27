@@ -1,4 +1,5 @@
-# shorturl
+# Shorturl-web
+This is the web ui of the short url [server](https://github.com/Gaojianli/UrlShorter)
 
 ## Project setup
 ```
