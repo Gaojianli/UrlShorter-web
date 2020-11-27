@@ -14,6 +14,7 @@
           placeholder="Put long and boring url here"
           outlined
           :rules="rule"
+          ref="urlInput"
           clearable
           v-model="longUrl"
         >
@@ -35,7 +36,7 @@
       </div>
     </v-container>
     <!-- result container -->
-    <v-container v-if="generated" class="flex-column">
+    <v-container v-if="generated" class="flex-column mb-xs-8" >
       <v-card class="mx-auto" max-width="500px">
         <v-card-text>
           <p class="display-1 text--primary">It done!</p>
@@ -102,7 +103,7 @@ export default class Main extends Vue {
 
   rule = [(v: string) => !!v || 'Please input the URL!'];
 
-  generated = false;
+  generated = true;
 
   short() {
     if (this.valid) {
@@ -129,6 +130,8 @@ export default class Main extends Vue {
         .catch((error) => {
           console.log(error.message);
         });
+    } else {
+      (this.$refs.urlInput as Element & { focus: () => void }).focus();
     }
   }
 }

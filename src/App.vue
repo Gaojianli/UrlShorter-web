@@ -31,7 +31,7 @@
       <router-view></router-view>
     </v-main>
     <v-footer
-      absolute
+      padless
       class="font-weight-medium"
     >
       <v-col
