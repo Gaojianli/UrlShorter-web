@@ -13,7 +13,8 @@
       </v-app-bar>
       <v-navigation-drawer color="#707C74" v-model="drawer" app dark>
         <v-list dense nav class="py-0">
-          <v-list-item v-for="item in items" :key="item.title" link :href="item.link">
+          <router-link v-for="item in items" :key="item.title" :to="item.link">
+          <v-list-item>
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -22,6 +23,7 @@
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          </router-link>
         </v-list>
       </v-navigation-drawer>
     </nav>
@@ -57,3 +59,12 @@ export default {
   }),
 };
 </script>
+
+<style>
+a {
+  text-decoration: none;
+}
+.router-link-active {
+  text-decoration: none;
+}
+</style>
