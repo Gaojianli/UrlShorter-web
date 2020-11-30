@@ -54,6 +54,7 @@ export default {
     items: [
       { title: 'Shorter', icon: 'mdi-content-cut', link: '/' },
       { title: 'Revoke', icon: 'mdi-delete', link: '/revoke' },
+      { title: 'API', icon: 'mdi-api', link: '/api' },
       { title: 'About', icon: 'mdi-information', link: '/about' },
     ],
   }),

@@ -17,15 +17,23 @@ const routes = [
     path: '/revoke',
     name: 'Revoke',
     meta: {
-      title: 'Revoke a URL-URL Shorter',
+      title: 'Revoke a URL -URL Shorter',
     },
     component: () => import('../views/Delete.vue'),
+  },
+  {
+    path: '/api',
+    name: 'API',
+    meta: {
+      title: 'API -URL Shorter',
+    },
+    component: () => import('../views/API.vue'),
   },
   {
     path: '/about',
     name: 'About',
     meta: {
-      title: 'About-URL Shorter',
+      title: 'About -URL Shorter',
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
