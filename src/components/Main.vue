@@ -7,6 +7,17 @@
         Tired of remembering long URL? Let me short it for you!
       </p>
       <br />
+      <div class="flex-center">
+        <div>Choose your protocol:</div>
+        <v-radio-group v-model="prefix" row>
+          <v-radio
+            v-for="r in radioes"
+            :key="r.comments"
+            :label="r.comments"
+            :value="r.prefix.toString()"
+          ></v-radio>
+        </v-radio-group>
+      </div>
       <br />
       <v-form v-model="valid">
         <v-text-field
@@ -14,7 +25,9 @@
           placeholder="Put long and boring url here"
           outlined
           :rules="rule"
+          :prefix="prefix"
           ref="urlInput"
+          hide-details="auto"
           clearable
           v-model="longUrl"
         >
@@ -36,7 +49,7 @@
       </div>
     </v-container>
     <!-- result container -->
-    <v-container v-if="generated" class="flex-column mb-xs-8" >
+    <v-container v-if="generated" class="flex-column mb-xs-8">
       <v-card class="mx-auto" max-width="500px">
         <v-card-text>
           <p class="display-1 text--primary">It done!</p>
@@ -81,9 +94,17 @@
     </v-snackbar>
   </v-container>
 </template>
+<style>
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
+
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { API_URL } from '@/config.ts';
+import { API_URL } from '@/config';
 
 @Component
 export default class Main extends Vue {
@@ -103,6 +124,23 @@ export default class Main extends Vue {
 
   rule = [(v: string) => !!v || 'Please input the URL!'];
 
+  prefix = ' ';
+
+  radioes = [
+    {
+      prefix: ' ',
+      comments: 'Customize',
+    },
+    {
+      prefix: 'https://',
+      comments: 'https://',
+    },
+    {
+      prefix: 'http://',
+      comments: 'http://',
+    },
+  ];
+
   generated = false;
 
   short() {
@@ -110,7 +148,13 @@ export default class Main extends Vue {
       this.loading = true;
       this.clicked = true;
       const urlencoded = new URLSearchParams();
-      urlencoded.append('urls', this.longUrl);
+      let toShort = this.longUrl;
+      if (this.prefix === 'https://' || this.prefix === 'http://') {
+        if (!this.longUrl.startsWith(this.prefix)) {
+          toShort = this.prefix + this.longUrl;
+        }
+      }
+      urlencoded.append('urls', toShort);
       fetch(API_URL, {
         method: 'PUT',
         body: urlencoded,

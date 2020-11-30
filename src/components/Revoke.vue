@@ -12,6 +12,7 @@
         <v-form v-model="vaild">
           <v-text-field
             v-model="shortUrl"
+            hint="https://u2b.eu/xxxx"
             label="Short URL"
             outlined
             :rules="urlRule"
