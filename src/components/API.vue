@@ -1,12 +1,15 @@
 <template>
     <v-container>
-        <VueMarkdown>{{mdContent}}</VueMarkdown>
+        <VueMarkdown :source="mdContent"></VueMarkdown>
     </v-container>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import VueMarkdown from 'vue-markdown';
+import VueMarkdown from 'vue-markdown-render';
 import Apidoc from '@/assets/APIDoc.md';
+import Prism from 'prismjs';
+
+Prism.highlightAll();
 
 @Component({
   components: {
