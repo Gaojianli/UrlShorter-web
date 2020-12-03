@@ -30,7 +30,7 @@ Targeted URL is included in `location` headers, no response body.
 |:-|:-|:-|
 |urls|string|Long URL to shorten|
 #### Response
-```jsonc
+```json
 {
     "code": 201, // error code
     "data": {
@@ -53,7 +53,7 @@ Targeted URL is included in `location` headers, no response body.
 |revokepwd|string|From query, revoke password.|
 
 #### Response
-```jsonc
+```json
 {
     "code": 201,
     "msg": "Deleted"

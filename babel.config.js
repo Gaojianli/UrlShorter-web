@@ -5,7 +5,7 @@ module.exports = {
   plugins: [['prismjs', {
     languages: ['json'],
     plugins: ['line-numbers'],
-    theme: 'twilight',
+    theme: 'solarizedlight',
     css: true,
   }]],
 };
