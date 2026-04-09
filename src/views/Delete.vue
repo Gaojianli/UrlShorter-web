@@ -1,15 +1,7 @@
 <template>
-    <div>
-        <Revoke/>
-    </div>
+  <Revoke />
 </template>
-<script lang="ts">
-import Vue from 'vue';
-import Revoke from '@/components/Revoke.vue';
 
-export default Vue.extend({
-  components: {
-    Revoke,
-  },
-});
+<script setup lang="ts">
+import Revoke from '@/components/Revoke.vue';
 </script>

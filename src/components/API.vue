@@ -1,19 +1,15 @@
 <template>
-    <v-container>
-        <VueMarkdown>{{mdContent}}</VueMarkdown>
-    </v-container>
+  <v-container>
+    <!-- v-html is safe here: content is from a local static asset, not user input -->
+    <div class="markdown-body" v-html="renderedHtml" />
+  </v-container>
 </template>
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import VueMarkdown from 'vue-markdown';
-import Apidoc from '@/assets/APIDoc.md';
 
-@Component({
-  components: {
-    VueMarkdown,
-  },
-})
-export default class API extends Vue {
-    mdContent= Apidoc
-}
+<script setup lang="ts">
+import { computed } from 'vue';
+import 'github-markdown-css/github-markdown.css';
+import md from '@/utils/markdown';
+import Apidoc from '@/assets/APIDoc.md?raw';
+
+const renderedHtml = computed(() => md.render(Apidoc));
 </script>
