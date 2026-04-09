@@ -1,5 +1,0 @@
-/* eslint-disable import/prefer-default-export */
-const API_URL = 'https://u2b.eu'; // Set your backend url here
-export {
-  API_URL,
-};

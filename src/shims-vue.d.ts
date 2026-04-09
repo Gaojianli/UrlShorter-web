@@ -1,10 +1,5 @@
 declare module '*.vue' {
-  import Vue from 'vue';
-
-  export default Vue;
-}
-
-declare module 'vue-github-button' {
-  export interface Vue {
-  }
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<Record<string, never>, Record<string, never>, unknown>;
+  export default component;
 }
